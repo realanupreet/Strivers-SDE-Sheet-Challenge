@@ -1,40 +1,28 @@
-# tired with this, gotta move on
-# candidates = [10, 1, 2, 7, 6, 1, 5]
-# target = 8
-# # candidates=set(candidates)
-# # candidates=list(candidates)
-# res = []
-# cur = []
-# # done=[]
+candidates = [10, 1, 2, 7, 6, 1, 5]
+target = 8
+
+candidates.sort()
+for c in candidates:
+    print(c)
+
+res = []
+cur = []
 
 
-# def solve(i, total):
-#     if total == target:
-#         ob = cur.copy()
-#         # ob.sort()
-#         # if ob not in res:
-#         res.append(ob)
-#         return
-#     if i >= len(candidates) or total > target:
-#         return
-
-#     cur.append(candidates[i])
-#     # done.append(candidates[i])
-#     solve(i+1, total+candidates[i])
-#     cur.pop()
-#     solve(i+1, total)
-#     # k=1
-#     # while k
-#     # if candidates[i+k] in done:
-#     # k+=1
-#     # if candidates[i+k] not in done:
-#     # else:
-#     # k+=1
-#     # nonlocal cur
-#     pass
+def solve(k, total):
+    if total == target:
+        res.append(cur.copy())
+        return
+    if total > target:
+        return
+    prev = -1
+    for i in range(k, len(candidates)):
+        if candidates[i] == prev:
+            continue
+        cur.append(candidates[i])
+        solve(i+1, total+candidates[i])
+        cur.pop()
+        prev = candidates[i]
 
 
-# solve(0, 0)
-
-# for r in res:
-#     print(r)
+solve(0, 0)
